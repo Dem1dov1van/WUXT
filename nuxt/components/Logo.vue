@@ -3,7 +3,8 @@
     <img src="/wuxt-logo.svg">
     <p>
       WUXT
-      <span>JS</span>
+      <span>J12</span>
+      <span>J12</span>
     </p>
   </nuxt-link>
 </template>

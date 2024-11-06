@@ -1,13 +1,5 @@
 <template>
   <div>
-    <header class="header">
-      <Logo/>
-
-      <nav class="header__nav">
-        <nuxt-link to="/hello-world">Hello World</nuxt-link>
-        <nuxt-link to="/sample-page">Sample Page</nuxt-link>
-      </nav>
-    </header>
     <nuxt class="container"/>
   </div>
 </template>
@@ -18,6 +10,31 @@ import Logo from '~/components/Logo'
 export default {
   components: {
     Logo
+  },
+  head() {
+    return {
+      script: [
+        {
+          src: "https://cdn.tailwindcss.com",
+          async: true,
+          defer: true
+        },
+        {
+          src: "https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"
+        }
+      ],
+      link: [
+        {
+          href: "https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css",
+          rel: "stylesheet"
+        }
+      ]
+    }
+  },
+  mounted() {
+    Fancybox.bind('[data-fancybox]', {
+        // Your custom options
+      }); 
   }
 }
 </script>
@@ -73,50 +90,8 @@ h6 {
 
 .container {
   width: 100%;
-  max-width: 1000px;
   margin: 0 auto;
   padding-right: 15px;
   padding-left: 15px;
-}
-
-.wp {
-  &__title {
-    margin-bottom: 30px;
-  }
-
-  &__content {
-    * {
-      &:nth-child(1n + 2) {
-        margin-top: 1rem;
-      }
-    }
-
-    p {
-      line-height: 1.8rem;
-    }
-  }
-}
-
-.header {
-  position: relative;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  margin-top: 100px;
-  margin-bottom: 50px;
-  padding-bottom: 50px;
-
-  border-bottom: 2px solid #ececec;
-
-  &__nav {
-    margin-top: 10px;
-
-    a {
-      margin: 5px;
-    }
-  }
 }
 </style>

@@ -30,42 +30,5 @@
       >WordPress</span> admin interface and can skip all back-end coding. But if you know your way around WordPress you are able to easily extend the back-end as well.
     </p>
   </main>
+
 </template>
-
-<script>
-</script>
-
-<style lang="scss" scoped>
-p {
-  &:nth-child(1n + 2) {
-    margin-top: 1rem;
-  }
-}
-
-ul {
-  margin-top: 1rem;
-
-  li {
-    &:nth-child(1n + 2) {
-      margin-top: 1rem;
-    }
-  }
-}
-
-.bold {
-  font-weight: 700;
-}
-
-.italic {
-  font-style: italic;
-}
-
-code {
-  padding: 3px 10px;
-
-  background-color: #37495c;
-  border-radius: 4px;
-
-  color: #fff;
-}
-</style>
