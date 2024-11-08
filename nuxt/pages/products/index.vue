@@ -1,8 +1,5 @@
 <template>
   <main class="wp__content">
-    <div class="123">
-      {{ posts }}
-    </div>
     <div class="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
 
 <!--Nav-->
