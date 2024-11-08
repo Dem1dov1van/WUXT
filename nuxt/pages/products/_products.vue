@@ -3,58 +3,33 @@
         <div class="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8 mt-6">
             <div class="grid gap-4 lg:col-span-2">
                 <div>
-                    <a 
-                        :href="data.img" 
-                        data-fancybox="gallery" 
+                    <a
+                        :href="mainImgUrl"
+                        data-fancybox="gallery"
                         data-caption="Caption #1"
                     >
-                        <img 
-                            class="h-auto max-w-full rounded-lg" 
-                            :src="data.img" 
-                            alt=""  
+                        <img
+                            class="h-auto max-w-full rounded-lg"
+                            :src="mainImgUrl"
+                            alt=""
                         >
                     </a>
                 </div>
                 <div class="grid grid-cols-5 gap-4">
-                    <div 
-                        v-for="(photo, i) in data.photos"
+                    <div
+                        v-for="(ulr, i) in imgUrls"
                         :key="i"
                     >
-                        <a 
-                            :href="photo.url" 
-                            data-fancybox="gallery" 
+                        <a
+                            :href="ulr"
+                            data-fancybox="gallery"
                             data-caption="Caption #1"
                         >
-                            <img 
-                                class="h-auto max-w-full rounded-lg"   
-                                :src="photo.url" 
+                            <img
+                                class="h-auto max-w-full rounded-lg"
+                                :src="ulr"
                                 alt=""
                             >
-                        </a>
-                    </div>
-                    <div>
-                        <a href="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" data-fancybox="gallery" data-caption="Caption #2">
-                            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" alt="">
-                        </a>
-                    </div>
-                    <div>
-                        <a href="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" data-fancybox="gallery" data-caption="Caption #3">
-                            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" alt="">
-                        </a>
-                    </div>
-                    <div>
-                        <a href="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" data-fancybox="gallery" data-caption="Caption #4">
-                            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" alt="">
-                        </a>
-                    </div>
-                    <div>
-                        <a href="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" data-fancybox="gallery" data-caption="Caption #5">
-                            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" alt="">
-                        </a>
-                    </div>
-                    <div>
-                        <a href="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-6.jpg" data-fancybox="gallery" data-caption="Caption #6">
-                            <img class="h-auto max-w-full rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-6.jpg" alt="">
                         </a>
                     </div>
                 </div>
@@ -111,7 +86,7 @@
                         <div class="flex gap-3 items-center">
 
                             <img src="https://avatars.githubusercontent.com/u/22263436?v=4"
-                                class="object-cover w-8 h-8 rounded-full 
+                                class="object-cover w-8 h-8 rounded-full
                                 border-2 border-emerald-400  shadow-emerald-400
                                 ">
 
@@ -131,7 +106,7 @@
                         <div class="flex gap-3 items-center">
 
                             <img src="https://avatars.githubusercontent.com/u/22263436?v=4"
-                                class="object-cover w-8 h-8 rounded-full 
+                                class="object-cover w-8 h-8 rounded-full
                                 border-2 border-emerald-400  shadow-emerald-400
                                 ">
 
@@ -164,7 +139,6 @@
         </section>
 
     </div>
-
 </template>
 
 <script>
@@ -186,6 +160,16 @@ export default {
         }
         this.data = json.acf
         console.log(this.data, 'this.data')
+    },
+    computed: {
+      imgUrls() {
+        const {img_obj} = this.data
+
+        return Object.values(img_obj).filter(Boolean)
+      },
+      mainImgUrl() {
+        return this.imgUrls[0]
+      }
     },
     methods: {
         getProductById () {

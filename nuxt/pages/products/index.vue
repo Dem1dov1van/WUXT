@@ -85,8 +85,8 @@
       </div>
     </nav>
 
-    <ProductCard 
-      v-for="(product, i) in products" 
+    <ProductCard
+      v-for="(product, i) in products"
       :key="product.id"
       :product="getCardProps(products[i])"
     ></ProductCard>
@@ -182,12 +182,12 @@
         </a>
 
         <p class="mt-8 mb-8">
-          С течением времени мебель может устареть морально, либо не подходить под новый дизайн интерьера. Мы решили дать вторую жизнь такой мебели. 
+          С течением времени мебель может устареть морально, либо не подходить под новый дизайн интерьера. Мы решили дать вторую жизнь такой мебели.
           Этот магазин - является экоинициативой Селектел. Вы можете забрать домой интерисующий вас предмет.
         </p>
 
         <p class="mb-8">
-          Транспортировка мебели из офисных помещений возлагается на нового владельца мебели. 
+          Транспортировка мебели из офисных помещений возлагается на нового владельца мебели.
           Стоимость мебели будет удержана из заработной платы сотрудника.
           Мебель не подлежит возврату
         </p>
@@ -286,9 +286,11 @@ export default {
     getCardProps(product) {
       console.log(product)
       const {id} = product
-      const {img, title, description, photos} = product.acf
+      const {title, description, img_obj} = product.acf
+
+      const photos = Object.values(img_obj).filter(Boolean)
       const obj = {
-        img,
+        img: photos[0],
         title,
         description,
         photos,
